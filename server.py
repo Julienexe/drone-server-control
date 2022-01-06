@@ -107,7 +107,7 @@ class SocketHandler(tornado.websocket.WebSocketHandler):
 """
 import time
 from typing import AsyncIterator
-import commands
+import subprocess
 import logging
 import tornado.escape
 import tornado.ioloop
@@ -176,7 +176,7 @@ class server:
 			if(len(ChatSocketHandler.waiters) == 0):
 				board.rcData = [1500, 1500, 1500, 1000]
 
-			mount = commands.getoutput('mount -v')
+			mount = subprocess.getoutput('mount -v')
 			lines = mount.split('\n')
 			points = map(lambda line: line.split()[2], lines)
 			information["usb"] = []
